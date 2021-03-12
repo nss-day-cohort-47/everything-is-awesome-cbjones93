@@ -12,3 +12,4 @@ export const loadLegos = () => {
       return legoArray.LegoColorss;
     })
 };
+
