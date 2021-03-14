@@ -59,12 +59,16 @@ const showFilteredSearch = (searchValue) => {
 	const filteredSearch = useLegos().filter(singleLego => {
 		if (singleLego.LegoId === searchValue) {
 			return singleLego
-		} else {
-			console.log("Invalid Id")
-			document.getElementById("all-legos").innerHTML = "<p> Invalid ID </p>"
 		}
 	})
-	makeLegoList(filteredSearch);
+	if (filteredSearch.length === 0) {
+		document.querySelector('#all-legos').innerHTML = `<p> Invalid ID </p>`;
+		document.querySelector('#mySearch').value = "";
+	}
+	else {
+		makeLegoList(filteredSearch);
+		document.querySelector('#mySearch').value = "";
+	}
 }
 
 
